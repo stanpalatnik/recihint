@@ -5,6 +5,10 @@ packages:
     description: crypto
     source: hosted
     version: "0.5.20"
+  dart_config:
+    description: dart_config
+    source: hosted
+    version: "0.5.0"
   log4dart:
     description: log4dart
     source: hosted
@@ -21,3 +25,11 @@ packages:
     description: sprintf
     source: hosted
     version: "1.0.7"
+  unittest:
+    description: unittest
+    source: hosted
+    version: "0.5.20"
+  yaml:
+    description: yaml
+    source: hosted
+    version: "0.5.20"
