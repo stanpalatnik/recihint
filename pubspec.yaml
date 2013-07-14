@@ -1,0 +1,8 @@
+name: recihint
+description: A sample command-line application
+dependencies:
+  log4dart: any
+  postgresql: any
+
+#dependencies:
+#  unittest: any
