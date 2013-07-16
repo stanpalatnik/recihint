@@ -7,6 +7,7 @@
 .metadata
 bin\packages
 bin/packages
+bin/config.yaml
 tmp/
 *.tmp
 *.bak
