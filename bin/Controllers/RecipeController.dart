@@ -1,20 +1,26 @@
 import 'dart:async';
+import 'dart:json' as json;
 import 'package:postgresql/postgresql.dart';
 import "package:log4dart/log4dart_vm.dart";
 import 'package:postgresql/postgresql_pool.dart';
+import '../Models/Recipe.dart';
 
 class RecipeController {
   static final _logger = LoggerFactory.getLogger("RecipeController");
   
   Future getRecipeById(Uri uri, Map config, Pool pool) {
-    var completer = new Completer();
-    
+    return    
     pool.connect().then((conn) {
-      
-      completer.complete("Succesfully connected!");
+      String query = """SELECT id, \"name\", rating, \"totalTime\", thumbnail, calories, \"ingredientsList\", 
+       yield, websitename, serving, recipeurl FROM reciplete.\"Recipe\" where id = @id;""";
+      conn.query(query, {'id': 5})
+      .toList()
+      .map((row) => new Recipe(row.id, row.name, row.rating, row.totalTime, row.thumbnail, row.calories, 
+          row.ingredientsList, row.yeild, row.serving, row.websitename, row.recipeurl))
+      .then((List<Recipe> recipies) {
+        json.stringify(recipies);
     });
-    
-    return completer.future;
+    });  
   }
   
   Future getRecipeByName(Uri uri, Map config, Pool pool) {
