@@ -15,7 +15,7 @@ class RecipeController {
           yield, websitename, serving, recipeurl FROM reciplete.\"Recipe\" where id = @id;""";
       conn.query(query, {'id': request.uri.queryParameters['id']})
       .toList().then((list) { 
-        List<Recipe> recipies = new List<Recipe>();
+        List recipies = [];
         list.forEach((row) => 
             recipies.add(new Recipe(row.id, row.name, row.rating, row.totalTime, row.thumbnail, row.calories, 
             row.ingredientsList, row.yield, row.serving, row.websitename, row.recipeurl)));
@@ -34,7 +34,7 @@ var completer = new Completer();
           yield, websitename, serving, recipeurl FROM reciplete.\"Recipe\" where name = @name;""";
       conn.query(query, {'id': request.uri.queryParameters['name']})
       .toList().then((list) { 
-        List<Recipe> recipies = new List<Recipe>();
+        List recipies = [];
         list.forEach((row) => 
             recipies.add(new Recipe(row.id, row.name, row.rating, row.totalTime, row.thumbnail, row.calories, 
             row.ingredientsList, row.yield, row.serving, row.websitename, row.recipeurl)));
