@@ -7,7 +7,7 @@ import 'package:postgresql/postgresql_pool.dart';
 class RecipeSearchController {
   static final _logger = LoggerFactory.getLogger("TestController");
 
-  Future searchRecipe(Uri uri, Map config, Pool pool) {
+  Future searchRecipe(HttpRequest request, Map config, Pool pool) {
     var completer = new Completer();
     
     pool.connect().then((conn) {

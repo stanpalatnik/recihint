@@ -25,7 +25,8 @@ void main() {
                 request.response.write(data);
                 request.response.close();  
               }).catchError(
-                  (e) => logger.error(e));
+                  (e) =>
+                      logger.error(e));
             });
           });    
         });

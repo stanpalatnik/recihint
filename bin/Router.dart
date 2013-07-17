@@ -16,15 +16,15 @@ class Router {
     String path = request.uri.path;
     if(path.startsWith("/recipe/id")) {
       var recipeController = new RecipeController();
-      return recipeController.getRecipeById(request.uri, config, pool);  
+      return recipeController.getRecipeById(request, config, pool);  
     }
     else if(path.startsWith("/recipe/list")) {
       var recipeController = new RecipeController();
-      return recipeController.listRecipies(request.uri, config, pool);  
+      return recipeController.listRecipies(request, config, pool);  
     }
     else if(path.startsWith("/recipe/search")) {
       var recipeSearchController = new RecipeSearchController();
-      return recipeSearchController.searchRecipe(request.uri, config, pool);  
+      return recipeSearchController.searchRecipe(request, config, pool);  
     }
     else {
       return new Future.value("Path not found");

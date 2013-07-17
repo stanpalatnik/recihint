@@ -1,8 +1,8 @@
 class Recipe {
-  double id;
+  int id;
   String name;
-  int rating;
-  double totalCookTime;
+  double rating;
+  int totalCookTime;
   String thumbUrl;
   int calories;
   String ingredientsList;
@@ -16,8 +16,8 @@ class Recipe {
     this.yield, this.servings, this.sourceSite, this.recipeUrl);  
   
   Map toJson() {
-    return {"id": id, "name": name, "rating": rating, totalCookTime: totalCookTime, 
-      thumbUrl: thumbUrl, calories: calories, ingredientsList: ingredientsList, yield: yield, 
-      servings: servings, sourceSite: sourceSite, recipeUrl: recipeUrl, attributes: attributes};
+    return {"id": id, "name": name, "rating": rating, "totalCookTime": totalCookTime, 
+      "thumbUrl": thumbUrl, "calories": calories, "ingredientsList": ingredientsList, "yield": yield, 
+      "servings": servings, "sourceSite": sourceSite, "recipeUrl": recipeUrl, "attributes": attributes};
   }
 }
