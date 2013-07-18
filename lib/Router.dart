@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'dart:async';
 import "package:log4dart/log4dart_vm.dart";
-import "Controllers/RecipeSearchController.dart";
+import "Controllers/recipe_search_controller.dart";
 import 'package:postgresql/postgresql_pool.dart';
-import "Controllers/RecipeController.dart";
+import "Controllers/recipe_controller.dart";
 
 class Router {
   static final _logger = LoggerFactory.getLoggerFor(Router);

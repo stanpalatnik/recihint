@@ -9,8 +9,7 @@ import "Router.dart";
 void main() {
   final logger = LoggerFactory.getLogger("Main");
   
-  loadConfig().then(
-      (Map config) {
+  loadConfig().then((Map config) {
         var pool = new Pool(config["database_string"], min: config["database_pool_min"], 
             max: config["database_pool_min"]);
         pool.start().then((_) {
@@ -24,9 +23,7 @@ void main() {
               responseFuture.then((data) {
                 request.response.write(data);
                 request.response.close();  
-              }).catchError(
-                  (e) =>
-                      logger.error(e));
+              }).catchError(logger.error);
             });
           });    
         });
