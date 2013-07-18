@@ -1,28 +1,30 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:postgresql/postgresql.dart';
 import "package:log4dart/log4dart_vm.dart";
 import 'package:postgresql/postgresql_pool.dart';
+import 'base_controller.dart' as Base;
 
-class UserController {
+class UserController extends Base.BaseController  {
  
   /**
    * Oauth login
    */
-  Future ouathLogin(Uri uri, Map config, Pool pool) {
+  Future ouathLogin(HttpRequest request) {
     
   }
   
   /**
    * Return a list of recipies that the user saved
    */
-  Future getSavedRecipies(Uri uri, Map config, Pool pool) {
+  Future getSavedRecipies(HttpRequest request) {
     
   }
   
   /**
    * Return a list of filters the user used to search for recipies
    */
-  Future getSavedSearchFilters(Uri uri, Map config, Pool pool) {
+  Future getSavedSearchFilters(HttpRequest request) {
     
   }
   

@@ -3,11 +3,12 @@ import 'dart:async';
 import 'dart:json' as json;
 import 'package:postgresql/postgresql.dart';
 import 'package:postgresql/postgresql_pool.dart';
+import 'base_controller.dart' as Base;
 import '../Models/recipe.dart';
 
-class RecipeController {
+class RecipeController extends Base.BaseController {
   
-  Future getRecipeById(HttpRequest request, Map config, Pool pool) {
+  Future getRecipeById(HttpRequest request) {
     var completer = new Completer();
     
     pool.connect().then((conn) {
@@ -26,7 +27,7 @@ class RecipeController {
     return completer.future;
   }
   
-  Future getRecipeByName(HttpRequest request, Map config, Pool pool) {
+  Future getRecipeByName(HttpRequest request) {
 var completer = new Completer();
     
     pool.connect().then((conn) {
@@ -48,7 +49,7 @@ var completer = new Completer();
   /**
    * Return the top 100 recipies based on score 
    */
-  Future listRecipies(HttpRequest request, Map config, Pool pool) {
+  Future listRecipies(HttpRequest request) {
     var completer = new Completer();
     
     pool.connect().then((conn) {
@@ -62,7 +63,7 @@ var completer = new Completer();
   /**
    * Return the top 100 recipies by category based on score 
    */
-  Future listRecipiesByCategory(HttpRequest request, Map config, Pool pool) {
+  Future listRecipiesByCategory(HttpRequest request) {
     var completer = new Completer();
     
     pool.connect().then((conn) {
