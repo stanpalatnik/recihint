@@ -1,5 +1,5 @@
 name: recihint
-description: A sample command-line application
+description: Recipe REST API
 dependencies:
   dart_config: any
   log4dart: any
