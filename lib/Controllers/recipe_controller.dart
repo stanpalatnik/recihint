@@ -29,13 +29,7 @@ var completer = new Completer();
       String query = """SELECT id, \"name\", rating, \"totalTime\", thumbnail, calories, \"ingredientsList\", 
           yield, websitename, serving, recipeurl FROM reciplete.\"Recipe\" where name = @name;""";
       conn.query(query, {'id': request.uri.queryParameters['name']})
-      .toList().then((list) { 
-        completer.complete(json.stringify(
-            list.map((row) => 
-                new Recipe(row.id, row.name, row.rating, row.totalTime, row.thumbnail, row.calories, 
-                    row.ingredientsList, row.yield, row.serving, row.websitename, row.recipeurl)).toList(growable: false)
-        ));
-      }); 
+      .then(completer.complete(generateRecipeReply)); 
     });
     
     return completer.future;
@@ -48,8 +42,10 @@ var completer = new Completer();
     var completer = new Completer();
     
     pool.connect().then((conn) {
-      
-      completer.complete("Succesfully connected!");
+      String query = """SELECT id, \"name\", rating, \"totalTime\", thumbnail, calories, \"ingredientsList\", 
+          yield, websitename, serving, recipeurl FROM reciplete.\"Recipe\" ORDER BY RATING DESC LIMIT 100;""";
+      conn.query(query)
+      .toList().then(completer.complete(generateRecipeListReply));      
     });
     
     return completer.future;
@@ -62,18 +58,28 @@ var completer = new Completer();
     var completer = new Completer();
     
     pool.connect().then((conn) {
-      
-      completer.complete("Succesfully connected!");
+      String query = """SELECT id, \"name\", rating, \"totalTime\", thumbnail, calories, \"ingredientsList\", 
+          yield, websitename, serving, recipeurl FROM reciplete.\"Recipe\" ORDER BY RATING DESC LIMIT 100;""";
+      conn.query(query)
+        .toList().then(completer.complete(generateRecipeListReply));     
     });
     
     return completer.future;
   }
   
-  String generateRecipeReply(result) {
+  String generateRecipeReply(recipe) {
     return json.stringify(
-        result.map((row) => 
+        recipe.map((row) => 
             new Recipe(row.id, row.name, row.rating, row.totalTime, row.thumbnail, row.calories, 
                 row.ingredientsList, row.yield, row.serving, row.websitename, row.recipeurl))
+    );
+  }
+  
+  String generateRecipeListReply(recipeList) {
+    return json.stringify(
+        recipeList.map((row) => 
+            new Recipe(row.id, row.name, row.rating, row.totalTime, row.thumbnail, row.calories, 
+                row.ingredientsList, row.yield, row.serving, row.websitename, row.recipeurl)).toList(growable: false)
     );
   }
 }
