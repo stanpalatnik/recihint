@@ -8,6 +8,8 @@ import 'base_controller.dart' as Base;
 
 class RecipeSearchController extends Base.BaseController {
   static final _logger = LoggerFactory.getLogger("TestController");
+  
+  RecipeSearchController(pool, config) {}
 
   Future searchRecipe(HttpRequest request) {
     var completer = new Completer();

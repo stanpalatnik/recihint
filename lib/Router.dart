@@ -15,16 +15,16 @@ class Router {
   Future route(HttpRequest request) {
     String path = request.uri.path;
     if(path.startsWith("/recipe/id")) {
-      var recipeController = new RecipeController();
-      return recipeController.getRecipeById(request, config, pool);  
+      var recipeController = new RecipeController(pool, config);
+      return recipeController.getRecipeById(request);  
     }
     else if(path.startsWith("/recipe/list")) {
-      var recipeController = new RecipeController();
-      return recipeController.listRecipies(request, config, pool);  
+      var recipeController = new RecipeController(pool, config);
+      return recipeController.listRecipies(request);  
     }
     else if(path.startsWith("/recipe/search")) {
-      var recipeSearchController = new RecipeSearchController();
-      return recipeSearchController.searchRecipe(request, config, pool);  
+      var recipeSearchController = new RecipeSearchController(pool, config);
+      return recipeSearchController.searchRecipe(request);  
     }
     else {
       return new Future.value("Path not found");

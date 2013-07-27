@@ -8,6 +8,8 @@ import '../Models/recipe.dart';
 
 class RecipeController extends Base.BaseController {
   
+  RecipeController(pool, config) {}
+  
   Future getRecipeById(HttpRequest request) {
     var completer = new Completer();
     
@@ -15,13 +17,7 @@ class RecipeController extends Base.BaseController {
       String query = """SELECT id, \"name\", rating, \"totalTime\", thumbnail, calories, \"ingredientsList\", 
           yield, websitename, serving, recipeurl FROM reciplete.\"Recipe\" where id = @id;""";
       conn.query(query, {'id': request.uri.queryParameters['id']})
-      .toList().then((list) { 
-        completer.complete(json.stringify(
-            list.map((row) => 
-                new Recipe(row.id, row.name, row.rating, row.totalTime, row.thumbnail, row.calories, 
-                    row.ingredientsList, row.yield, row.serving, row.websitename, row.recipeurl)).toList(growable: false)
-        ));
-      }); 
+      .then(completer.complete(generateRecipeReply)); 
     });   
     return completer.future;
   }
@@ -71,5 +67,13 @@ var completer = new Completer();
     });
     
     return completer.future;
+  }
+  
+  String generateRecipeReply(result) {
+    return json.stringify(
+        result.map((row) => 
+            new Recipe(row.id, row.name, row.rating, row.totalTime, row.thumbnail, row.calories, 
+                row.ingredientsList, row.yield, row.serving, row.websitename, row.recipeurl))
+    );
   }
 }

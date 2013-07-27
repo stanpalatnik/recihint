@@ -1,8 +1,0 @@
-# real server config.yaml
-dev_port: 8080
-production_port: 80
-
-#Database info
-database_string: postgres://yankees_reciplete:gagne1@localhost:5432/reciplete
-database_pool_min: 2
-database_pool_max: 8

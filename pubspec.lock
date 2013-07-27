@@ -4,7 +4,7 @@ packages:
   crypto:
     description: crypto
     source: hosted
-    version: "0.5.20"
+    version: "0.6.12"
   dart_config:
     description: dart_config
     source: hosted
@@ -16,7 +16,11 @@ packages:
   meta:
     description: meta
     source: hosted
-    version: "0.5.20"
+    version: "0.6.12"
+  path:
+    description: path
+    source: hosted
+    version: "0.6.12"
   postgresql:
     description: postgresql
     source: hosted
@@ -25,11 +29,15 @@ packages:
     description: sprintf
     source: hosted
     version: "1.0.7"
+  stack_trace:
+    description: stack_trace
+    source: hosted
+    version: "0.6.12"
   unittest:
     description: unittest
     source: hosted
-    version: "0.5.20"
+    version: "0.6.12"
   yaml:
     description: yaml
     source: hosted
-    version: "0.5.20"
+    version: "0.6.12"

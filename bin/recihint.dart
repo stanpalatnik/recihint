@@ -4,7 +4,7 @@ import "package:log4dart/log4dart_vm.dart";
 import 'package:dart_config/default_server.dart';
 import 'package:postgresql/postgresql_pool.dart';
 
-import "Router.dart";
+import '../lib/Router.dart';
 
 void main() {
   final logger = LoggerFactory.getLogger("Main");
